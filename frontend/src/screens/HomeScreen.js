@@ -36,9 +36,9 @@ function HomeScreen({ history }) {
   return (
     <div>
       {!keyword && <ProductCarousel />}
-
+  
       <h1>Latest Products</h1>
-
+  
       {loading ? (
         <Loader />
       ) : error ? (
@@ -46,20 +46,19 @@ function HomeScreen({ history }) {
       ) : (
         <div>
           <Row>
-            {products.map((product) => {
-              return (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              );
-            })}
+            {products && products.map((product) => (
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                <Product product={product} />
+              </Col>
+            ))}
           </Row>
-
+  
           <Paginate page={page} pages={pages} keyword={keyword} />
         </div>
       )}
     </div>
   );
+  
 }
 
 export default HomeScreen;
